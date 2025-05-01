@@ -13,6 +13,7 @@ transformers
 torch
 huggingface-hub
 tqdm
+python-dotenv
 numpy
 requests
 streamlit
