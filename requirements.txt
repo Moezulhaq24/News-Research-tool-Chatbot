@@ -1,10 +1,9 @@
-google_generativeai 
-google-ai-generativelangauage
-langchain_core
-langchain-google-genai 
-langchain_experimental
+google-generativeai
 langchain
+langchain-core
 langchain-google-genai
+langchain-experimental
+langchain-community
 sentence-transformers
 faiss-cpu
 unstructured
@@ -13,7 +12,6 @@ python-docx
 transformers
 torch
 huggingface-hub
-langchain-community
 tqdm
 numpy
 requests
