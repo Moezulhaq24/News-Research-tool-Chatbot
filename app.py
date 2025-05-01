@@ -10,12 +10,13 @@ from langchain.vectorstores import FAISS
 from langchain_google_genai import ChatGoogleGenerativeAI
 from sentence_transformers import SentenceTransformer
 from langchain.embeddings import HuggingFaceEmbeddings
+from dotenv import load_dotenv
 import streamlit as st
 
-GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
-os.environ["GOOGLE_API_KEY"] = GEMINI_API_KEY
+load_dotenv()
+gemini_key = st.secrets["GEMINI_API_KEY"]
 
-st.title("RockyBot: News Research Tool 📈")
+st.title("News Research Tool 📈")
 st.sidebar.title("News Article URLs")
 
 urls = []
