@@ -15,4 +15,3 @@ huggingface-hub
 tqdm
 numpy
 requests
-pickle5
