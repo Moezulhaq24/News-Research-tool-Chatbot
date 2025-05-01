@@ -58,21 +58,23 @@ if process_url_clicked:
     main_placeholder.text("Embedding Vector Started Building...✅✅✅")
     time.sleep(2)
 
-    with open(file_path, "wb") as f:
-        pickle.dump(vectorstore_openai, f)
+    vectorstore_path = "faiss_index"
+    vectorstore_openai.save_local(vectorstore_path)
+
 
 query = main_placeholder.text_input("Question: ")
-if query and os.path.exists(file_path):
-    with open(file_path, "rb") as f:
-        vectorstore = pickle.load(f)
-        chain = RetrievalQAWithSourcesChain.from_llm(llm=llm, retriever=vectorstore.as_retriever())
-        result = chain({"question": query}, return_only_outputs=True)
+if query and os.path.exists(vectorstore_path):
+    embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+    vectorstore = FAISS.load_local(vectorstore_path, embedding_model, allow_dangerous_deserialization=True)
+    
+    chain = RetrievalQAWithSourcesChain.from_llm(llm=llm, retriever=vectorstore.as_retriever())
+    result = chain({"question": query}, return_only_outputs=True)
 
-        st.header("Answer")
-        st.write(result["answer"])
+    st.header("Answer")
+    st.write(result["answer"])
 
-        sources = result.get("sources", "")
-        if sources:
-            st.subheader("Sources:")
-            for source in sources.split("\n"):
-                st.write(source)
+    sources = result.get("sources", "")
+    if sources:
+        st.subheader("Sources:")
+        for source in sources.split("\n"):
+            st.write(source)
