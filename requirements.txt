@@ -6,3 +6,6 @@ sentence-transformers
 torch
 faiss-cpu
 python-dotenv
+unstructured[local-inference]
+beautifulsoup4
+html5lib
