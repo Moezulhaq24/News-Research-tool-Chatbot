@@ -12,6 +12,7 @@ from sentence_transformers import SentenceTransformer
 from langchain.embeddings import HuggingFaceEmbeddings
 import streamlit as st
 
+GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
 os.environ["GOOGLE_API_KEY"] = GEMINI_API_KEY
 
 st.title("RockyBot: News Research Tool 📈")
