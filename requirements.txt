@@ -1,7 +1,8 @@
 streamlit
 langchain
+langchain-community
 langchain-google-genai
 sentence-transformers
+torch
 faiss-cpu
-unstructured
-langchain-community
+python-dotenv
